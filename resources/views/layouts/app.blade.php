@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uang Kas Kelas</title>
+    <title>KasMatic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">Uang Kas Kelas</a>
+            <a class="navbar-brand" href="{{ url('/') }}">KasMatic</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,7 +56,52 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        @yield('content')
+        @if(request()->is('/'))
+            <!-- Rich Landing Page Content -->
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5 text-center">
+                    <h1 class="display-4 fw-bold">Welcome to KasMatic</h1>
+                    <p class="col-md-8 fs-4 mx-auto">Kelola dana kelas Anda dengan mudah dan transparan dengan aplikasi kami yang sederhana dan efektif.</p>
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">GasKeun!</a>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Manage Majors</h5>
+                            <p class="card-text">Atur dan pantau berbagai jurusan di sekolah Anda.</p>
+                            <a href="{{ route('majors.index') }}" class="btn btn-outline-primary">View Majors</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Manage Classes</h5>
+                            <p class="card-text">Kelola informasi kelas dan tugas siswa dengan mudah.</p>
+                            <a href="{{ route('classes.index') }}" class="btn btn-outline-primary">View Classes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Track Transactions</h5>
+                            <p class="card-text">Menyimpan catatan transparan dari semua transaksi dana kelas.</p>
+                            <a href="{{ route('transactions.index') }}" class="btn btn-outline-primary">View Transactions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="pt-4 my-md-5 pt-md-5 border-top text-center">
+                <p class="text-muted">© 2024 KasMatic. All rights reserved.</p>
+            </footer>
+        @else
+            @yield('content')
+        @endif
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

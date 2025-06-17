@@ -8,7 +8,7 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.app');
 });
 
 Route::resource('majors', MajorController::class);
